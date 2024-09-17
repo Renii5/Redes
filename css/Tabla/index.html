@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla RWD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1b3e2d;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed;
+        }
+        thead {
+            background-color: #2a6e4f;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        tbody {
+            display: block;
+            max-height: 300px; /* Adjust the height as needed */
+            overflow-y: auto; /* Scroll inside the table body */
+            width: 100%;
+        }
+        tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            word-wrap: break-word;
+        }
+        tr:nth-child(even) {
+            background-color: #235c43;
+        }
+        tr:hover {
+            background-color: #3b8363;
+        }
+        td[data-type='identifier'] {
+            width: 10%;
+            font-weight: bold;
+        }
+        td[data-type='nickname'] {
+            width: 20%;
+            font-style: italic;
+        }
+        td[data-type='email-address'] {
+            width: 30%;
+            color: #d4e157;
+        }
+        td[data-type='website'] {
+            width: 25%;
+            text-decoration: underline;
+        }
+        td[data-type='contact'] {
+            width: 25%;
+            color: #9ccc65;
+        }
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            th {
+                text-align: right;
+                padding-right: 5%;
+                position: relative;
+            }
+            th::after {
+                content: ':';
+                position: absolute;
+                right: 0;
+            }
+            td {
+                text-align: left;
+                padding-left: 30%;
+                position: relative;
+                word-wrap: break-word;
+                width: 100%;
+            }
+            td[data-type='identifier'],
+            td[data-type='nickname'],
+            td[data-type='email-address'],
+            td[data-type='website'],
+            td[data-type='contact'] {
+                width: 100%;
+                display: block;
+            }
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 5%;
+                white-space: nowrap;
+            }
+        }
+        footer {
+            background-color: #2a6e4f;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <h2>Tabla</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nick</th>
+                <th>Mail</th>
+                <th>Web</th>
+                <th>Skype</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-type="identifier">1</td>
+                <td data-type="nickname">Juan</td>
+                <td data-type="email-address">juan@gmail.com</td>
+                <td data-type="website">http://juan.ar</td>
+                <td data-type="contact">juan@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">2</td>
+                <td data-type="nickname">Pedro</td>
+                <td data-type="email-address">pedro@mail.com</td>
+                <td data-type="website">http://pedro.com</td>
+                <td data-type="contact">pedro@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">3</td>
+                <td data-type="nickname">Maria</td>
+                <td data-type="email-address">maria@gmail.com</td>
+                <td data-type="website">http://maria.org</td>
+                <td data-type="contact">maria@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">4</td>
+                <td data-type="nickname">Ana</td>
+                <td data-type="email-address">ana@mail.ar</td>
+                <td data-type="website">http://ana.music</td>
+                <td data-type="contact">ana@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">5</td>
+                <td data-type="nickname">Carlos</td>
+                <td data-type="email-address">carlos@gmail.com</td>
+                <td data-type="website">http://carlos.com.ar</td>
+                <td data-type="contact">carlos@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">6</td>
+                <td data-type="nickname">Lucia</td>
+                <td data-type="email-address">lucia@mail.com</td>
+                <td data-type="website">http://lucia.com</td>
+                <td data-type="contact">lucia@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">7</td>
+                <td data-type="nickname">Diego</td>
+                <td data-type="email-address">diego@gmail.com</td>
+                <td data-type="website">http://diego</td>
+                <td data-type="contact">diego@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">8</td>
+                <td data-type="nickname">Sofia</td>
+                <td data-type="email-address">sofia@mail.com</td>
+                <td data-type="website">http://sofia.page</td>
+                <td data-type="contact">sofia@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">9</td>
+                <td data-type="nickname">Miguel</td>
+                <td data-type="email-address">miguel@mail.com</td>
+                <td data-type="website">http://miguel.biz</td>
+                <td data-type="contact">miguel@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">10</td>
+                <td data-type="nickname">Laura</td>
+                <td data-type="email-address">laura@mail.com</td>
+                <td data-type="website">http://laura.me</td>
+                <td data-type="contact">laura@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">11</td>
+                <td data-type="nickname">Jorge</td>
+                <td data-type="email-address">jorge@mail.com</td>
+                <td data-type="website">http://jorge.site</td>
+                <td data-type="contact">jorge@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">12</td>
+                <td data-type="nickname">Paula</td>
+                <td data-type="email-address">paula@mail.com</td>
+                <td data-type="website">http://paula.info</td>
+                <td data-type="contact">paula@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">13</td>
+                <td data-type="nickname">Luis</td>
+                <td data-type="email-address">luis@mail.com</td>
+                <td data-type="website">http://luis.org</td>
+                <td data-type="contact">luis@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">14</td>
+                <td data-type="nickname">Valeria</td>
+                <td data-type="email-address">valeria@mail.com</td>
+                <td data-type="website">http://valeria.web</td>
+                <td data-type="contact">valeria@gmail.com</td>
+            </tr>
+            <tr>
+                <td data-type="identifier">15</td>
+                <td data-type="nickname">Esteban</td>
+                <td data-type="email-address">esteban@mail.com</td>
+                <td data-type="website">http://esteban.net</td>
+                <td data-type="contact">esteban@gmail.com</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>Pie de formulario</p>
+</footer>
+
+</body>
+</html>
