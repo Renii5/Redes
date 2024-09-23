@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Divs</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-top: 0px;
+            margin-bottom: 20px;
+        }
+
+        /* sin padding */
+        .div1 {
+            width: 50%;
+            padding: 0;
+            background-color: lightblue;
+            border: 1px solid black;
+            height: 50px; /* Alargar a 200px */
+        }
+
+        /* con padding */
+        .div2 {
+            width: 70%;
+            padding: 20px;
+            background-color: lightgreen;
+            border: 1px solid black;
+            height: 200px; 
+        }
+
+        /*con padding y box-sizing */
+        .div3 {
+            width: 50%;
+            padding: 20px;
+            background-color: lightcoral;
+            border: 1px solid black;
+            box-sizing: border-box;
+            height: 300px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicio Centrado Y Padding</h1>
+    <div class="div1">
+        <p>Primer div sin padding.</p>
+    </div>
+    <div class="div2">
+        <p>Segundo div con padding.</p>
+    </div>
+    <div class="div3">
+        <p>Tercer div con padding y box-sizing.</p>
+    </div>
+    <a href="../../index.html" style="display: block; text-align: center; margin-top: 20px; text-decoration: none; color: #000000;">Volver al Índice</a>
+
+</body>
+</html>

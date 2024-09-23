@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio - Objetos en JavaScript</title>
+</head>
+<body>
+    <h1>Ejercicio</h1>
+    <p>Variable de tipo objeto de dato.</p>
+
+    <div id="form-section" style="background-color: #e8dff5; padding: 10px; margin: 10px 0;">
+        <h3>Agregar persona</h3>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name"><br><br>
+        <label for="surname">Apellido:</label>
+        <input type="text" id="surname"><br><br>
+        <label for="birthdate">Fecha de Nacimiento:</label>
+        <input type="date" id="birthdate"><br><br>
+        <button onclick="addPerson()">Crear persona</button>
+    </div>
+
+    <div id="control-section" style="background-color: #d4afb9; padding: 10px; margin: 10px 0;">
+        <button onclick="listPersons()">Lista de personas</button>
+        <button onclick="togglePresentation()">Ocultar presentación</button>
+    </div>
+
+    <div id="presentation">
+        <h3>Presentación</h3>
+        <table id="personTable" border="1">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <p id="arrayLength">Longitud del arreglo de objetos: 0</p>
+    </div>
+
+    <script>
+        let persons = [
+            { name: "Juan", surname: "Fernandez", birthdate: "2000-10-11" },
+            { name: "Maria", surname: "Lopez", birthdate: "1998-11-21" }
+        ];
+
+        function addPerson() {
+            const name = document.getElementById('name').value.trim();
+            const surname = document.getElementById('surname').value.trim();
+            const birthdate = document.getElementById('birthdate').value;
+
+            if (name === "" || surname === "" || birthdate === "") {
+                alert('Por favor, rellena todos los campos.');
+                return;
+            }
+
+            let person = {
+                name: name,
+                surname: surname,
+                birthdate: birthdate
+            };
+
+            persons.push(person);
+
+            document.getElementById('name').value = '';
+            document.getElementById('surname').value = '';
+            document.getElementById('birthdate').value = '';
+
+            listPersons();
+        }
+
+        function listPersons() {
+            const presentation = document.getElementById('presentation');
+            const tableBody = document.querySelector('#personTable tbody');
+
+            presentation.style.display = "block";
+
+            tableBody.innerHTML = '';
+
+            persons.forEach(person => {
+                let row = tableBody.insertRow();
+                row.insertCell(0).textContent = person.name;
+                row.insertCell(1).textContent = person.surname;
+                row.insertCell(2).textContent = person.birthdate;
+            });
+
+            document.getElementById('arrayLength').textContent = `Longitud del arreglo de objetos: ${persons.length}`;
+        }
+
+        function togglePresentation() {
+            const presentation = document.getElementById('presentation');
+            if (presentation.style.display === "none") {
+                presentation.style.display = "block";
+            } else {
+                presentation.style.display = "none";
+            }
+        }
+
+        window.onload = function() {
+            listPersons();
+            document.getElementById('presentation').style.display = "none";
+        };
+    </script>
+</body>
+</html>
