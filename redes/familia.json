@@ -1,0 +1,10 @@
+{
+    "familias": [
+        { "codigo": "FRSEC", "nombre": "Frutas Secas" },
+        { "codigo": "LAC", "nombre": "Lácteos" },
+        { "codigo": "VER", "nombre": "Verduras" },
+        { "codigo": "CAR", "nombre": "Carnes" },
+        { "codigo": "SEMI", "nombre": "Semillas" }
+
+]   
+}

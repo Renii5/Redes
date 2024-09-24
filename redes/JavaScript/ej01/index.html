@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Alerta</title>
+</head>
+<body>
+    <h1>Texto1 escrito directamente en HTML.</h1>
+    <p id="texto2" style="display: none;">Texto2. Mensaje escrito desde JavaScript.</p>
+    <p id="texto3" style="display: none;">No pisa al documento porque aún no termino el flujo de escritura del navegador</p>
+    <p id="texto4" style="display: none;">Texto 3 escrito en HTML escrito después del alert()</p>
+    <p id="texto5" style="display: none;">Texto4. Escrito desde JavaScript después del alert()</p>
+    <p id="texto6" style="display: none;">No pisa al documento porque aún no termino el flujo de escritura del navegador</p>
+    <p id="texto7" style="display: none;">El flujo de escritura sobre el navegador termina un tiempo determinado después de la lectura de la última línea del documento y de haber cerrado todas las ventanas modales.</p>
+
+    <script>
+        // Mostrar la alerta al cargar la página
+        window.onload = function() {
+            alert("Esto es una alerta. Presiona aceptar para ver el contenido.");
+            
+            // Mostrar el contenido después de cerrar la alerta
+            document.getElementById('texto2').style.display = 'block';
+            document.getElementById('texto3').style.display = 'block';
+            document.getElementById('texto4').style.display = 'block';
+            document.getElementById('texto5').style.display = 'block';
+            document.getElementById('texto6').style.display = 'block';
+            document.getElementById('texto7').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
