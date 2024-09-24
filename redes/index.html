@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Desplegable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 0%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #menu {
+            background-color: #333;
+            overflow: hidden;
+            width: 100%;
+            
+        }
+        #menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        #menu ul li {
+            flex-grow: 1;
+            float: left;
+            text-align: center;
+        }
+        #menu ul li a {
+            display: block;
+            padding: 14px 20px;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+    
+        }
+        #menu ul li:hover {
+            background-color: #e893c4;
+        }
+        #menu ul li ul {
+            display: none;
+            position: absolute;
+            min-width: 100px;
+            background-color: #333;
+            z-index: 1;
+        }
+        #menu ul li:hover ul {
+            display: block;
+        }
+        #menu ul li ul li {
+            float: none;
+        }
+        #menu ul li ul li a {
+            padding: 12px 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="menu"> 
+        <ul>
+            <li><a href="html/">Html</a> 
+                <ul>
+                    <li><a href="html/Preguntas.html">Preguntas</a></li>
+                    <li><a href="html/tablas.html">Tablas</a></li>
+                    <li><a href="html/forms.html">Forms</a></li>
+                    <li><a href="html/iframes.html">Iframes</a></li>
+                </ul>
+            </li>
+            <li><a href="css/css.html">Css</a> 
+                <ul>
+                    <li><a href="css/css08/index.html">Ej08</a></li>
+                    <li><a href="css/Tabla/index.html">Tabla</a></li>
+                    <li><a href="css/Formulario/index.html">Formulario</a></li>
+                </ul>
+            </li>
+            <li><a href="JavaScript/js.html">JavaScript</a>
+            <ul>
+                <li><a href="JavaScript/ej01/index.html">ej01</a></li>
+                <li><a href="JavaScript/Objeto/index.html">Objeto</a></li>
+                <li><a href="JavaScript/keyUp/index.html">Key Up</a></li>
+                <li><a href="JavaScript/Amb/index.html">Formulario ABM</a></li>
+                <li><a href="JavaScript/creacion/index.html">Creacion de Objetos</a></li>
+            </ul>
+            </li>
+            <li><a href="Especiales/index.html">Especiales</a>
+                <ul>
+                    <li><a href="Especiales/Formulario/index.html">Formulario</a></li>
+                    <li><a href="Especiales/ej02/index.html">Ej02</a></li>
+                    <li><a href="Especiales/ej03/index.html">Ej03</a></li>
+                </ul>
+                </li>
+        </ul>
+    </nav>
+
+</body>
+</html>
