@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Alta</title>
+    <title>Formulario</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         html, body {
@@ -65,7 +65,7 @@
 <body>
 
 <header>
-    <h1>Formulario para ALTA - Maestro de Artículos</h1>
+    <h1>Formulario</h1>
 </header>
 
 <main>
@@ -75,7 +75,7 @@
         
         <label for="familia">Familia:</label>
         <select id="familia" name="familia" required>
-            <option value="">Seleccione una familia</option>
+            <option value="">Seleccione una opcion</option>
         </select>
         
         <label for="descripcion">Descripción:</label>
@@ -92,47 +92,39 @@
 </main>
 
 <footer>
-    <p>Pie del formulario</p>
+    <p>Pie</p>
 </footer>
 
 <script>
-    $(document).ready(function() {
-        $('#cargar-datos').on('click', function() {
-            $.getJSON('../../articulo.json', function(datosArticulos) {
-                let tbody = $('#tbody-articulos').empty();
-                $.each(datosArticulos.articulos, function(index, articulo) {
-                    tbody.append(`<tr>
-                        <td>${articulo.codArt}</td>
-                        <td>${articulo.familia}</td>
-                        <td>${articulo.um}</td>
-                        <td>${articulo.descripcion}</td>
-                        <td>${articulo.fechaAlta}</td>
-                        <td>${articulo.saldoStock}</td>
-                    </tr>`);
-                });
-            });
+    $.getJSON('/redes/familia.json', function(data) {
+        data.familias.forEach(familia => {
+            $('#familia').append(new Option(familia.nombre, familia.codigo));
         });
+    }).fail(function() {
+        alert('Error al cargar el archivo familia.json');
+    });
 
-        $.getJSON('../../familia.json', function(datosFamilias) {
-            let familiaSelect = $('#familia');
-            $.each(datosFamilias.familias, function(index, familia) {
-                familiaSelect.append(`<option value="${familia.codigo}">${familia.nombre}</option>`);
-            });
-        });
+    $('#articuloForm').on('submit', function(e) {
+        e.preventDefault(); 
 
-        $('#vaciar-datos').on('click', function() {
-            $('#tbody-articulos').empty();
-        });
+        const codArt = $('#codArt').val();
+        const familia = $('#familia').val();
+        const descripcion = $('#descripcion').val();
+        const fechaAlta = $('#fechaAlta').val();
+        const stock = $('#stock').val();
 
-        $('#abrirModalBtn').on('click', function() {
-            $('#modal, #superposicion').fadeIn();
-        });
-        $('#cerrarModalBtn, #superposicion').on('click', function() {
-            $('#modal, #superposicion').fadeOut();
-        });
+        console.log('Datos del formulario:', { codArt, familia, descripcion, fechaAlta, stock });
+
+        if (!codArt || !familia || !descripcion || !fechaAlta || !stock) {
+            alert("Todos los campos deben estar completos.");
+            return false;
+        }
+
+        const redirectUrl = `/redes/Especiales/Formulario/respuesta.html?formArticuloEntCodArt=${encodeURIComponent(codArt)}&familia=${encodeURIComponent(familia)}&descripcion=${encodeURIComponent(descripcion)}&fechaAlta=${encodeURIComponent(fechaAlta)}&stock=${encodeURIComponent(stock)}`;
+
+        window.location.href = redirectUrl;
     });
 </script>
-
 
 </body>
 </html>
