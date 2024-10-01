@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumador Mejorado y Ordenado</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        #display {
+            width: 100%;
+            height: 40px;
+            font-size: 1.5em;
+            text-align: right;
+            margin-bottom: 15px;
+            padding-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .button {
+            width: 60px;
+            height: 40px;
+            font-size: 1.0em;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .number-button {
+            background-color: #87CEEB;
+        }
+        .action-button {
+            background-color: #FFD700;
+            width: 150px;
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            justify-items: center;
+        }
+        .action-container {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="text" id="display" disabled>
+
+        <div class="button-container">
+            <button class="button number-button" onclick="insertarEnDisplay(1)">1</button>
+            <button class="button number-button" onclick="insertarEnDisplay(2)">2</button>
+            <button class="button number-button" onclick="insertarEnDisplay(3)">3</button>
+            <button class="button number-button" onclick="insertarEnDisplay(4)">4</button>
+            <button class="button number-button" onclick="insertarEnDisplay(5)">5</button>
+            <button class="button number-button" onclick="insertarEnDisplay(6)">6</button>
+            <button class="button number-button" onclick="insertarEnDisplay(7)">7</button>
+            <button class="button number-button" onclick="insertarEnDisplay(8)">8</button>
+            <button class="button number-button" onclick="insertarEnDisplay(9)">9</button>
+        </div>
+
+        <div class="action-container">
+            <button class="button action-button" onclick="sumar()">+</button>
+            <button class="button action-button" onclick="mostrarAcumulador()">Muestra Acumulador</button>
+            <button class="button action-button" onclick="borrarAcumulador()">Borra Acumulador</button>
+            <button class="button action-button" onclick="borrarDisplay()">Borra Display</button>
+        </div>
+    </div>
+
+    <script>
+        let acumulador = 0;
+
+        function insertarEnDisplay(numero) {
+            const display = document.getElementById('display');
+            if (display.value.length < 9) {
+                display.value += numero;
+            }
+        }
+
+        function sumar() {
+            const display = document.getElementById('display');
+            let valorDisplay = parseInt(display.value);
+            if (display.value !== '' && valorDisplay >= 0) {
+                acumulador += valorDisplay;
+                display.value = '';
+            } else {
+                alert("Por favor, ingrese un número antes de sumar.");
+            }
+        }
+
+        function mostrarAcumulador() {
+            alert("El valor acumulado es: " + acumulador);
+        }
+
+        function borrarAcumulador() {
+            acumulador = 0;
+            alert("Acumulador reiniciado a 0");
+        }
+
+        function borrarDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+
+    </script>
+</body>
+</html>

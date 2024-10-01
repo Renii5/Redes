@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Desplegable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 0%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #menu {
+            background-color: #333;
+            overflow: hidden;
+            width: 100%;
+        }
+        #menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        #menu ul li {
+            flex-grow: 1;
+            float: left;
+            text-align: center;
+        }
+        #menu ul li a {
+            display: block;
+            padding: 14px 20px;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+    
+        }
+        #menu ul li:hover {
+            background-color: #e893c4;
+        }
+        #menu ul li ul {
+            display: none;
+            position: absolute;
+            min-width: 100px;
+            background-color: #333;
+            z-index: 1;
+        }
+        #menu ul li:hover ul {
+            display: block;
+        }
+        #menu ul li ul li {
+            float: none;
+        }
+        #menu ul li ul li a {
+            padding: 12px 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="menu"> 
+        <ul>
+            <li><a href="html/">Html</a> 
+                <ul>
+                    <li><a href="html/EJ01_preguntas/Preguntas.html">Preguntas</a></li>
+                    <li><a href="html/Ej02_tabla/tablas.html">Tablas</a></li>
+                    <li><a href="html/Ej03_Forms/forms.html">Formulario</a></li>
+                    <li><a href="html/Ej04_Iframes/iframes.html">Iframes</a></li>
+                </ul>
+            </li>
+            <li><a href="css/css.html">Css</a> 
+                <ul>
+                    <li><a href="css/Ej01_Divs/index.html">Ej01</a></li>
+                    <li><a href="css/Ej02_Pila/index.html">Ej02</a></li>
+                    <li><a href="css/EJ03/index.html">Ej03</a></li>
+                    <li><a href=""></a>Ej04</li>
+                    <li><a href="css/Ej05_contenedores/index.html"></a>Ej05</li>
+                    <li><a href="css/Ej06/index.html">Ej06</a></li>
+                    <li><a href="css/Ej07_Div_Interno/index.html"></a>Ej07</li>
+                    <li><a href="css/Ej08/index.html">Ej08</a></li>
+                    <li><a href="css/Tabla/index.html">Tabla</a></li>
+                    <li><a href="css/Formulario/index.html">Formulario</a></li>
+                    <li><a href="css/Layout/index.html">Layout</a></li>
+                </ul>
+            </li>
+            <li><a href="JavaScript/js.html">JavaScript</a>
+            <ul>
+                <li><a href="JavaScript/Ej01-Alertas/index.html">ej01 Alertas</a></li>
+                <li><a href="JavaScript/Ej02-cuentas/index.html">ej02 Cuentas</a></li>
+                <li><a href="JavaScript/Ej03-comando_en_evento/index.html">ej03</a></li>
+                <li><a href="JavaScript/Ej04-Variables_simples/index.html">ej04 Var Simples</a></li>
+                <li><a href="JavaScript/Ej05-Alcance/index.html">ej05 Alcance</a></li>
+                <li><a href="JavaScript/Ej06_Arreglos/index.html">ej06 Arreglos</a></li>
+                <li><a href="JavaScript/Ej07_operaciones/index.html">ej07 Operaciones</a></li>
+                <li><a href="JavaScript/Ej08_op_entre_inputs/index.html">Ej08</a></li>
+                <li><a href="JavaScript/Ej09_calculadora/index.html">Ej09</a></li>
+                <li><a href="JavaScript/Ej10_funcion_flecha/index.html">Ej10</a></li>
+                <li><a href="JavaScript/Ej11_locacion/index.html">Ej11</a></li>
+                <li><a href="JavaScript/Objeto/index.html">Objeto</a></li>
+                <li><a href="JavaScript/keyUp/index.html">Key Up</a></li>
+                <li><a href="JavaScript/Amb/index.html">Formulario ABM</a></li>
+                <li><a href="JavaScript/creacion/index.html">Creacion de Objetos</a></li>
+            </ul>
+            </li>
+            <li><a href="Especiales/index.html">Especiales</a>
+                <ul>
+                    <li><a href="Especiales/Formulario/index.html">Formulario</a></li>
+                    <li><a href="Especiales/ej02/index.html">Ej02</a></li>
+                    <li><a href="Especiales/ej03/index.html">Ej03</a></li>
+                </ul>
+            </li>
+            <li><a href="">PHP</a>
+                <ul>
+
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+</body>
+</html>

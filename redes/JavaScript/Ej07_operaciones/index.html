@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones sobre Input</title>
+</head>
+<body>
+    <h1>Ejercicio de operaciones sobre el input</h1>
+        
+    <input type="text" id="inputValue" placeholder="Escriba un número">
+    
+    <button onclick="mostrarValor()">Muestre valor</button>
+    <button onclick="sumarUno()">Suma 1</button>
+    <button onclick="cuadrado()">x**2</button>
+    <button onclick="multiplicaDos()">Multiplica * 2</button>
+    <button onclick="cuadradoDoble()">2**x</button>
+    
+    <script>
+        function mostrarValor() {
+            let valor = document.getElementById('inputValue').value;
+            alert("Valor introducido: " + valor); 
+        }
+
+        function sumarUno() {
+            let valor = parseInt(document.getElementById('inputValue').value);
+            let resultado = valor + 1;
+            document.getElementById('inputValue').value = resultado;
+        }
+
+        function cuadrado() {
+            let valor = parseInt(document.getElementById('inputValue').value);
+            let resultado = valor * valor;
+            document.getElementById('inputValue').value = resultado;
+        }
+
+        function multiplicaDos() {
+            let valor = parseInt(document.getElementById('inputValue').value);
+            let resultado = valor * 2;
+            document.getElementById('inputValue').value = resultado;
+        }
+
+        function cuadradoDoble() {
+            let valor = parseInt(document.getElementById('inputValue').value);
+            let resultado1 = valor * valor;
+            let resultado2 = resultado1 * valor;
+            document.getElementById('inputValue').value = resultado1, resultado2;
+        }
+    </script>
+</body>
+</html>
