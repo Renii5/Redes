@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función Flecha en JavaScript</title>
+</head>
+<body>
+    <h2>Función Flecha</h2>
+
+    <h4>const suma = (a, b) => { c=a+b; return c}</h4>
+
+    <h4>Resultado de la suma para a=5 y b=8: <span id="c"></span></h4>
+
+    <script>
+        const suma = (a, b) => {
+            return a + b;
+        };
+
+        const c = suma(5, 8);
+
+        document.getElementById('c').textContent = c;
+    </script>
+</body>
+</html>

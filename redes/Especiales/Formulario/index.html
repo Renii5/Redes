@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Música</title>
+    <style>
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #cdb4db;
+        }
+        header, footer {
+            background-color: #cdb4db;
+            text-align: center;
+            padding: 10px;
+        }
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #c6e2e9;
+        }
+        form {
+            display: grid;
+            gap: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+            max-width: 800px;
+            border-radius: 5px;
+        }
+        label {
+            margin: 5px 0;
+            text-align: right;
+            grid-column: auto;
+        }
+        input[type="text"], input[type="date"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            grid-column: span 2;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4c87af;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Formulario de Música</h1>
+</header>
+
+<main>
+    <form id="musicaForm" method="post">
+        <label for="titulo">Título de la Canción:</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Ingrese título de la canción" required>
+        
+        <label for="artista">Artista:</label>
+        <input type="text" id="artista" name="artista" placeholder="Ingrese el nombre del artista" required>
+        
+        <label for="genero">Género:</label>
+        <select id="genero" name="genero" required>
+            <option value="">Seleccione un género</option>
+        </select>
+        
+        <label for="añoLanzamiento">Año de Lanzamiento:</label>
+        <input type="date" id="añoLanzamiento" name="añoLanzamiento" required>
+        
+        <label for="duracion">Duración (en minutos):</label>
+        <input type="text" id="duracion" name="duracion" placeholder="Ingrese duración de la canción" required>
+        
+        <input type="submit" value="Enviar">
+    </form>
+</main>
+
+<footer>
+    <p>Pie de página</p>
+</footer>
+
+<script>
+    const datosCanciones = {
+        "canciones": [
+            {
+                "titulo": "Bohemian Rhapsody",
+                "artista": "Queen",
+                "album": "A Night at the Opera",
+                "genero": "Rock",
+                "añoLanzamiento": "1975-10-31",
+                "duracion": 5.55
+            },
+            {
+                "titulo": "Deja Vu",
+                "artista": "Gustavo Cerati",
+                "album": "Fuerza Natural",
+                "genero": "Rock Argentino",
+                "añoLanzamiento": "2009-08-27",
+                "duracion": 3.24
+            },
+            {
+                "titulo": "Billie Jean",
+                "artista": "Michael Jackson",
+                "album": "Thriller",
+                "genero": "Pop",
+                "añoLanzamiento": "1982-11-30",
+                "duracion": 4.54
+            }
+        ]
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        let generoSelect = document.getElementById('genero');
+        datosCanciones.canciones.forEach(function(cancion) {
+            let option = document.createElement('option');
+            option.value = cancion.genero;
+            option.textContent = cancion.genero;
+            generoSelect.appendChild(option);
+        });
+
+        document.getElementById('musicaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const titulo = document.getElementById('titulo').value;
+            const artista = document.getElementById('artista').value;
+            const genero = document.getElementById('genero').value;
+            const añoLanzamiento = document.getElementById('añoLanzamiento').value;
+            const duracion = document.getElementById('duracion').value;
+
+            if (!titulo || !artista || !genero || !añoLanzamiento || !duracion) {
+                alert("Todos los campos deben estar completos.");
+                return false;
+            }
+
+            const redirectUrl = `/redes/Especiales/Formulario/respuesta.html?titulo=${encodeURIComponent(titulo)}&artista=${encodeURIComponent(artista)}&genero=${encodeURIComponent(genero)}&añoLanzamiento=${encodeURIComponent(añoLanzamiento)}&duracion=${encodeURIComponent(duracion)}`;
+
+            window.location.href = redirectUrl;
+        });
+    });
+</script>
+
+</body>
+</html>
