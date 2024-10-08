@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Encriptación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 10px;
+            width: 90%;
+            margin: 20px auto;
+        }
+        .input-section {
+            grid-column: 1 / span 1;
+            background-color: #ccc;
+            padding: 20px;
+        }
+        .input-section label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .input-section input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+        }
+        .button-section {
+            grid-column: 2 / span 1;
+            background-color: #007bff;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .button-section button {
+            padding: 10px 20px;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .result-section {
+            grid-column: 3 / span 1;
+            background-color: #ffd700;
+            padding: 20px;
+        }
+        .result-section h3 {
+            font-weight: bold;
+            color: #333;
+        }
+        .status-section {
+            grid-column: 1 / span 3;
+            background-color: #add8e6;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="input-section">
+            <label for="clave">Dato de entrada:</label>
+            <input type="text" id="clave" name="clave" placeholder="Introduce la clave a encriptar">
+        </div>
+
+        <div class="button-section">
+            <button id="encriptarBtn">Encriptar</button>
+        </div>
+
+        <div class="result-section">
+            <h3>Resultado:</h3>
+            <p id="resultado"></p>
+        </div>
+
+        <div class="status-section">
+            <h4>Estado del requerimiento:</h4>
+            <p id="estadoRequerimiento">Pendiente</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('encriptarBtn').addEventListener('click', function() {
+            var clave = document.getElementById('clave').value;
+
+            if (clave) {
+                document.getElementById('estadoRequerimiento').innerText = 'Encriptando...';
+
+                fetch('index.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'clave=' + encodeURIComponent(clave)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById('estadoRequerimiento').innerText = data.error;
+                    } else {
+                        document.getElementById('resultado').innerText =
+                            `Clave: ${data.clave}\n\n` +
+                            `Clave encriptada en md5: ${data.md5}\n\n` +
+                            `Clave encriptada en sha1: ${data.sha1}`;
+    
+                        document.getElementById('estadoRequerimiento').innerText = 'Encriptación realizada con éxito';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('estadoRequerimiento').innerText = 'Error en la encriptación';
+                    console.error('Error:', error);
+                });
+            } else {
+                document.getElementById('estadoRequerimiento').innerText = 'Por favor, introduce una clave válida';
+            }
+        });
+    </script>
+
+</body>
+</html>

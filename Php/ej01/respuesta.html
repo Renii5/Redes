@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clave Encriptada</title>
+</head>
+<body>
+    <h1>Resultado de la Encriptación</h1>
+    
+    <p id="claveOriginal"></p>
+    <p id="md5Result"></p>
+    <p id="sha1Result"></p>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const encriptacion = urlParams.get('encriptacion');
+
+        const claveOriginal = sessionStorage.getItem('clave'); 
+
+        if (claveOriginal && encriptacion) {
+            document.getElementById('claveOriginal').textContent = `Clave: ${claveOriginal}`;
+            document.getElementById('md5Result').textContent = `Clave encriptada en md5: ${encriptacion}`;
+            document.getElementById('sha1Result').textContent = `Clave encriptada en sha1 (160 bits o 20 pares hexadecimales): ${encriptacion}`; 
+        } else {
+            document.getElementById('claveOriginal').textContent = "No se recibió ninguna clave.";
+        }
+    </script>
+</body>
+</html>

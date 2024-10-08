@@ -1,0 +1,8 @@
+{
+    "familias": [
+        { "codigo": "ROCK", "nombre": "Rock" },
+        { "codigo": "POP", "nombre": "Pop" },
+        { "codigo": "JAZZ", "nombre": "Jazz" },
+        { "codigo": "HIPHOP", "nombre": "Hip Hop" }
+]   
+}
