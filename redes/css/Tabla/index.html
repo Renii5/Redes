@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla RWD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2e3b55;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #2e3b55;
+            padding: 5px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .content {
+            flex: 1;
+            overflow-x: auto; /* Permite el desplazamiento horizontal */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            min-width: 600px; /* Establece un ancho mínimo para evitar que las columnas se colapsen demasiado */
+        }
+
+        thead {
+            background-color: #4a5d7c;
+            color: #fff;
+        }
+
+        th, td {
+            padding: 15px; 
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        tr:nth-child(even) {
+            background-color: #3b4b6a;
+        }
+
+        tr:hover {
+            background-color: #5a6c8e;
+        }
+
+        .id {
+            width: 10%;
+            font-weight: bold;
+        }
+
+        .evento {
+            width: 20%;
+            font-style: italic;
+        }
+
+        .fecha {
+            width: 20%;
+        }
+
+        .email {
+            width: 25%;
+            color: #d4e157;
+        }
+
+        .website {
+            width: 25%;
+            text-decoration: underline;
+            color: #9ccc65;
+        }
+
+        .ubicacion {
+            width: 35%; 
+        }
+
+        @media (max-width: 768px) {
+            .website {
+                display: none; 
+            }
+        }
+
+        footer {
+            background-color: #4a5d7c;
+            color: #ffffff;
+            text-align: center;
+            padding: 25px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <header><h2>Tabla RWD</h2></header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Evento</th>
+                <th>Fecha</th>
+                <th>Mail</th>
+                <th>Web</th>
+                <th>Ubicación</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="id">1</td>
+                <td class="evento">Concierto Rock</td>
+                <td class="fecha">15/10/2024</td>
+                <td class="email">rockfest@mail.com</td>
+                <td class="website">http://rockfest.com</td>
+                <td class="ubicacion">Teatro Principal</td>
+            </tr>
+            <tr>
+                <td class="id">2</td>
+                <td class="evento">Exposición de Arte</td>
+                <td class="fecha">20/11/2024</td>
+                <td class="email">artshow@mail.com</td>
+                <td class="website">http://artshow.org</td>
+                <td class="ubicacion">Museo de Arte</td> 
+            </tr>
+            <tr>
+                <td class="id">3</td>
+                <td class="evento">Festival de Jazz</td>
+                <td class="fecha">05/12/2024</td>
+                <td class="email">jazzfest@mail.com</td>
+                <td class="website">http://jazzfest.net</td>
+                <td class="ubicacion">Centro Cultural</td> 
+            </tr>
+            <tr>
+                <td class="id">4</td>
+                <td class="evento">Feria del Libro</td>
+                <td class="fecha">10/01/2025</td>
+                <td class="email">bookfair@mail.com</td>
+                <td class="website">http://bookfair.com</td>
+                <td class="ubicacion">Plaza de Eventos</td> 
+            </tr>
+            <tr>
+                <td class="id">5</td>
+                <td class="evento">Taller de Fotografía</td>
+                <td class="fecha">28/02/2025</td>
+                <td class="email">photo@mail.com</td>
+                <td class="website">http://photoworkshop.info</td>
+                <td class="ubicacion">Estudio Fotográfico</td> 
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>Pie de la tabla</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+    "canciones": [
+        {
+            "titulo": "Bohemian Rhapsody",
+            "artista": "Queen",
+            "album": "A Night at the Opera",
+            "genero": "Rock",
+            "añoLanzamiento": "1975-10-31",
+            "duracion": 5.55
+        },
+        {
+            "titulo": "Deja Vu",
+            "artista": "Gustavo Cerati",
+            "album": "Fuerza Natural",
+            "genero": "Rock Argentino",
+            "añoLanzamiento": "2009-08-27",
+            "duracion": 3.24
+        },
+        {
+            "titulo": "Billie Jean",
+            "artista": "Michael Jackson",
+            "album": "Thriller",
+            "genero": "Pop",
+            "añoLanzamiento": "1982-11-30",
+            "duracion": 4.54
+        }
+    ]
+}
