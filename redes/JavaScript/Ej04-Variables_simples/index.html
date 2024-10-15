@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo con Botones y Div sin Funciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #contenedor {
+            width: 80%;
+            height: 200px;
+            background-color: lightblue;
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <button onclick="z = undefined; document.getElementById('valorZ').textContent = typeof z; document.getElementById('tipoZ').textContent = typeof z;">
+        var z
+    </button>
+    <button onclick="a = 5; document.getElementById('valorZ').textContent = a; document.getElementById('tipoZ').textContent = typeof a;">
+        var a=5
+    </button>
+    <button onclick="b = '3'; document.getElementById('valorZ').textContent = b; document.getElementById('tipoZ').textContent = typeof b;">
+        var b='3'
+    </button>
+    <button onclick="c = 2; document.getElementById('valorZ').textContent = c; document.getElementById('tipoZ').textContent = typeof c;">
+        var c=2
+    </button>
+    <button onclick="sum1 = a + b; document.getElementById('valorZ').textContent = sum1; document.getElementById('tipoZ').textContent = typeof sum1;">
+        sum1=a+'b'
+    </button>
+    <button onclick="sum2 = (a ? parseInt(a) : 0) + (c ? parseInt(c) : 0); document.getElementById('valorZ').textContent = sum2; document.getElementById('tipoZ').textContent = typeof sum2;">
+        sum2=a+c
+    </button>
+
+    <div id="contenedor">
+        <p><strong>Valor de z:</strong> <span id="valorZ">undefined</span></p>
+        <p><strong>Tipo de z:</strong> <span id="tipoZ">undefined</span></p>
+    </div>
+</body>
+</html>
