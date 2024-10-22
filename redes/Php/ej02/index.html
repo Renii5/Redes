@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Encriptación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .contenedor {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            width: 60vw;
+            height: 40vh;
+            gap: 10px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        /* Sección de entrada */
+        .seccion-entrada {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            background-color: #ffcc80; /* Naranja claro */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .seccion-entrada label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .seccion-entrada input {
+            padding: 10px;
+            font-size: 1em;
+            width: 100%;
+            border: 2px solid #f57c00;
+            border-radius: 5px;
+        }
+
+        /* Sección de botón */
+        .seccion-boton {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            background-color: #80deea; /* Azul celeste claro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            border-radius: 10px;
+        }
+        .seccion-boton button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #00838f; /* Azul petróleo */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+        .seccion-boton button:hover {
+            background-color: #00acc1; /* Azul petróleo claro */
+        }
+
+        .seccion-resultado {
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+            background-color: #a5d6a7; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .seccion-estado {
+            grid-column: 1 / 4;
+            grid-row: 2 / 3;
+            background-color: #607d8b; 
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="contenedor">
+        <div class="seccion-entrada">
+            <label for="clave">Dato de entrada:</label>
+            <input type="text" id="clave" name="clave" placeholder="Introduce la clave a encriptar">
+        </div>
+
+        <div class="seccion-boton">
+            <button id="encriptarBtn">Encriptar</button>
+        </div>
+
+        <div class="seccion-resultado">
+            <h3>Resultado:</h3>
+            <p id="resultado"></p>
+        </div>
+
+        <div class="seccion-estado">
+            <h4>Estado del requerimiento:</h4>
+            <p id="estadoRequerimiento">Pendiente</p>
+        </div>
+    </div>
+
+    <script>
+        $('#encriptarBtn').click(function() { 
+            var clave = $('#clave').val(); 
+
+            if (clave) {
+                $('#estadoRequerimiento').text('Encriptando...'); 
+
+                $.ajax({
+                    url: 'index.php',  
+                    type: 'POST',     
+                    data: { clave: clave },
+                    dataType: 'json', 
+                    success: function(data) { 
+                        if (data.error) {
+                            $('#estadoRequerimiento').text(data.error); 
+                        } else {
+                            $('#resultado').text(
+                                `Clave: ${data.clave}\n` +
+                                `MD5: ${data.md5}\n` +
+                                `SHA1: ${data.sha1}`
+                            );
+                            $('#estadoRequerimiento').text('Encriptación realizada con éxito');
+                        }
+                    },
+                    error: function() { 
+                        $('#estadoRequerimiento').text('Error en la encriptación');
+                        console.error('Error en la solicitud AJAX');
+                    }
+                });
+            } else {
+                $('#estadoRequerimiento').text('Por favor, introduce una clave válida');
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Divs Internos</title>
+<style>
+    *
+{
+    box-sizing: border-box;
+
+}
+
+h1{
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.contenedor
+{
+    background: skyblue;
+    display: flex;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    justify-content:left;
+
+}
+
+.elemento
+{
+    background: grey;
+    text-align: center;
+    width: calc(20% - 20px);
+    margin: 10px;
+    padding: 20px;
+}
+
+.elemento img {
+    max-width: 60%;
+    max-height: 60%;
+    margin: 5%;
+}
+
+.contenedor .primero
+{
+    background: grey;
+    text-align: center;
+    height: 700px;
+    width: 200px;
+    float: left;
+}
+
+.contenedor .segundo
+{
+    width: 200px ;
+    height: 450px;
+}
+
+.contenedor .tercero
+{
+    width: 200px ;
+    height: 300px;
+}
+
+.contenedor .cuarto
+{
+    width: 200px ;
+    height: 300px;
+    
+}
+
+.contenedor .quinto
+{
+    width: 200px ;
+    height: 300px;
+}
+
+.contenedor .sexto
+{
+    background: grey;
+    text-align: center;
+    height: auto;
+    width: 200px;
+    margin: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    clear: both;
+}
+
+.contenedor .septimo{
+    width: 200px ; 
+    height: 300px;
+}
+
+.contenedor .octavo{
+    width: 200px ;
+    height: 300px;
+}
+
+
+
+/* Media queries para ajustar el número de columnas */
+@media (max-width: 1280px) {
+    .elemento {
+        width: calc(25% - 20px); /* Cuatro elementos en una fila */
+    }
+}
+
+@media (max-width: 960px) {
+    .elemento {
+        width: calc(33.33% - 20px); /* Tres elementos en una fila */
+    }
+}
+
+@media (max-width: 768px) {
+    .elemento {
+        width: calc(50% - 20px); /* Dos elementos en una fila */
+    }
+}
+
+/* Cambiar el color cuando solo queda una fila */
+@media (max-width: 480px) {
+    .elemento {
+        width: calc(100% - 20px); /* Un elemento por fila */
+        background: rgb(137, 225, 36); /* Cambia el color de fondo de los divs */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .sexto {
+        order: 3;
+    }
+
+    .septimo {
+        order: 4;
+    }
+
+    .octavo {
+        order: 5; 
+    }
+}
+</style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Encolumnado sin tablas</h1>
+        <div class="elemento primero"><p>ejemplo ejemploejemplo ejemploejemplo ejemploejemplo ejemplo<img src="../img/nubes.jpg" alt="#"></p></div>
+
+        <div class="elemento segundo"><p>ejemplo ejemploejemplo ejemploejemplo ejemploejemplo ejemplo ejemplo ejemplo</p></div>
+
+        <div class="elemento tercero"><p>ejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemploejemplo ejemplo ejemplo ejemplo</p></div>
+
+        <div class="elemento cuarto"><p>ejemplo ejemploejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo</p></div>
+
+        <div class="elemento quinto"><p>ejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo</p></div>
+
+        <div class="elemento sexto"><p>ejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemploejemplo ejemplo ejemplo ejemplo<img src="../img/playa.jpg" alt=""></p></div>
+
+        <div class="elemento septimo"><p>ejemplo ejemplo ejemplo ejemplo ejemploejemplo ejemplo ejemplo ejemplo</p></div>
+
+        <div class="elemento octavo"><p> ejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemploejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemploejemplo ejemplo ejemplo ejemplo</p></div>
+
+    </div>
+</body>
+</html>

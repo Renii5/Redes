@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divs Responsivos en Fila</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        div.fondo {
+            background-color: #b5d6d6;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        div.caja {
+            flex: 0 1 calc(16.66% - 20px);
+            margin: 10px;
+            text-align: center;
+            height: 150px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        div.primero {
+            background-color: #fce1e4;
+        }
+
+        div.segundo {
+            background: radial-gradient(circle, rgb(213, 111, 175) 30%, rgb(204, 106, 106) 60%);
+        }
+
+        div.flores {
+            background-image: url('./flores.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        div.margarita {
+            background-image: url('./flores2.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background: linear-gradient(75deg, rgb(116, 169, 198), rgb(192, 139, 203), rgb(229, 134, 150));
+        }
+
+        div.cuarta {
+            background: linear-gradient(75deg, rgb(116, 169, 198), rgb(192, 139, 203), rgb(229, 134, 150));
+        }
+
+        div.quinta {
+            background-color: #fce1e4;
+        }
+
+        img {
+           height: 100%;
+            width: 100%; 
+            object-fit: cover;
+        }
+        div.margarita img {
+            height: 100%;
+            width: auto;
+        }
+
+        @media (max-width: 1300px) {
+            div.caja {
+                flex: 0 1 calc(20% - 20px); 
+            }
+        }
+
+        @media (max-width: 1100px) {
+            div.caja {
+                flex: 0 1 calc(25% - 20px); 
+            }
+        }
+
+        @media (max-width: 900px) {
+            div.caja {
+                flex: 0 1 calc(33.33% - 20px); 
+            }
+        }
+
+        @media (max-width: 700px) {
+            div.caja {
+                flex: 0 1 calc(50% - 20px); 
+            }
+        }
+
+        @media (max-width: 500px) {
+            div.caja {
+                flex: 0 1 calc(100% - 20px); 
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fondo">
+        <div class="caja primero">
+            <p>Texto en caja 1</p>
+        </div>
+
+        <div class="caja segundo">
+            <p>Texto en caja 2</p>
+        </div>
+
+        <div class="caja flores">
+            <img src="flores.jpg" alt="Flores">
+        </div>
+
+        <div class="caja margarita">
+            <img src="flores2.jpg" alt="Margarita">
+        </div>
+
+        <div class="caja cuarta">
+            <p>Texto en caja 5</p>
+        </div>
+
+        <div class="caja quinta">
+            <p>Texto en caja 6</p>
+        </div>
+    </div>
+</body>
+
+</html>

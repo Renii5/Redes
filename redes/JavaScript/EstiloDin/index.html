@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio de Estilos Dinámico</title>
+    <style>
+        #miDiv {
+            width: 300px; 
+            height: 200px; 
+            border: 2px solid rgb(210, 224, 165);
+            padding: 10px;
+            margin: 20px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: rgb(246, 176, 48); 
+        }
+
+        h3 {
+            color: rgb(10, 10, 10); 
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            text-align: left; 
+        }
+
+        li {
+            color: rgb(7, 7, 7); 
+            margin: 5px 0; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejemplo de cambios de estilo dinámicamente</h1>
+    
+    <div id="miDiv">
+        <h3>Lista con estilo</h3>
+        <ul id="miLista">
+            <li>Texto1</li>
+            <li>Texto2</li>
+            <li>Texto3</li>
+        </ul>
+    </div>
+
+    <div>
+        <button onclick="cambiarEstilo('tipo1')">Tipo 1 </button>
+        <button onclick="cambiarEstilo('tipo2')">Tipo 2</button>
+        <button onclick="cambiarEstilo('tipo3')">Tipo 3 </button>
+        <button onclick="cambiarEstilo('tipo4')">Tipo 4</button>
+    </div>
+
+    <script>
+        function cambiarEstilo(tipo) {
+            const miDiv = document.getElementById('miDiv');
+            const miLista = document.getElementById('miLista');
+            const items = miLista.getElementsByTagName('li');
+
+
+            miDiv.style.backgroundColor = obtenerColorAleatorio();
+
+            if (tipo === 'tipo1' || tipo === 'tipo3') {
+                miLista.style.listStyleType = 'disc'; 
+                for (let i = 0; i < items.length; i++) {
+                    items[i].textContent = items[i].textContent.replace(/^[a-z]\. /, ''); 
+                }
+            } else if (tipo === 'tipo2' || tipo === 'tipo4') {
+                miLista.style.listStyleType = 'none'; 
+                for (let i = 0; i < items.length; i++) {
+                    items[i].textContent = String.fromCharCode(97 + i) + '. ' + items[i].textContent; 
+                }
+            }
+        }
+
+        function obtenerColorAleatorio() {
+            const letras = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letras[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>

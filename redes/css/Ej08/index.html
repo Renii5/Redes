@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        html, body {
+            overflow: hidden;
+        }
+
+        div.fondo {
+            background-color: #b5d6d6;
+            margin: auto;
+            padding: 10px;
+            max-width: 960px; 
+            min-height: 800px; 
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: space-around; 
+            align-items: center;
+        }
+
+        div.foto1, div.foto2, div.foto3 {
+            width: 30%; 
+            height: 200px; 
+            background-image: url('./flores.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover; 
+        }
+
+        @media (min-width: 1080px) {
+            div.foto1, div.foto2, div.foto3 {
+                width: 30%; 
+            }
+        }
+
+        @media (min-width: 600px) and (max-width: 1079px) {
+            div.foto1, div.foto2 {
+                width: 45%; 
+            }
+
+            div.foto3 {
+                width: 45%; 
+                margin-top: -240px;
+            }
+        }
+
+        @media (max-width: 599px) {
+            div.foto1, div.foto2, div.foto3 {
+                width: 80%; 
+                height: 250px; 
+                margin: 10px auto; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fondo">
+        <div class="foto1"></div>
+        <div class="foto2"></div>
+        <div class="foto3"></div>
+    </div>
+</body>
+</html>

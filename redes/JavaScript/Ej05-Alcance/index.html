@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Variables</title>
+</head>
+<body>
+    <button onclick="function initLocal() { let localVar = prompt('Introduce un valor para la variable:'); alert('Valor de la variable: ' + localVar); alert('Tipo de la variable: ' + typeof localVar); } initLocal();">
+        Iniciación Local
+    </button>
+    <button onclick="function initGlobal() { globalVar = prompt('Introduce un valor para la variable global:'); alert('Valor de la variable global: ' + globalVar); alert('Tipo de la variable global: ' + typeof globalVar); } initGlobal();">
+        Iniciación Global
+    </button>
+    <button onclick="alert('Valor de la variable global: ' + (typeof globalVar !== 'undefined' ? globalVar : 'no definida')); alert('Tipo de la variable global: ' + (typeof globalVar !== 'undefined' ? typeof globalVar : 'no definida'));">
+        Mostrar Variable Global
+    </button>    
+
+</body>
+</html>

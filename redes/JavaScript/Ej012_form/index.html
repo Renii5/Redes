@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Envío y Reset</title>
+    <style>
+        form {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+            background-color: aliceblue;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="email"] {
+            width: 80%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+    
+    </style>
+</head>
+<body>
+    <h2>Formulario de Registro</h2>
+    <form id="miFormulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="button" onclick="enviarFormulario()">Enviar</button>
+        <button type="reset">Resetear</button>
+    </form>
+
+    <script>
+        function enviarFormulario() {
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const confirmacion = confirm('¿Estás seguro de que quieres enviar el formulario?');
+            if (confirmacion) {
+                window.location.href = 'respuesta.html?nombre=' + encodeURIComponent(nombre) + '&email=' + encodeURIComponent(email);
+            }
+        }
+
+        document.getElementById('miFormulario').addEventListener('reset', function() {
+            alert('Formulario reseteado.');
+        });
+    </script>
+</body>
+</html>

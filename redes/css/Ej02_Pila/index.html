@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja en Pila</title>
+    <style>
+       *{
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+        h1{
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+            margin-right: 65%;
+        }
+
+        p {
+            font-size: 15px;
+            padding: 0;
+            margin: 0;
+        }
+        p.cuarta {
+            text-align: left; 
+        }
+
+        div.fondo {
+            background-color: #b5d6d6;
+            margin: 0 auto;
+            padding: 0px;
+            max-width: 960px; 
+            min-height: 800px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; 
+        }
+
+        div.primero, div.segundo, div.flores, div.cuarta {
+            width: 80%;
+            max-width: 500px; 
+            margin-top: 20px;
+            text-align: center;
+            min-height: 60px; 
+            flex-grow: 1; 
+            box-sizing:border-box;
+            height: 150px; 
+
+        }
+
+        div.primero {
+            background-color: #fce1e4;
+        }
+
+        div.segundo {
+            background: radial-gradient(circle, rgb(213, 111, 175) 30%, rgb(204, 106, 106) 60%);
+        }
+
+        div.flores {
+            background-color: #d4afb9;
+            background-image: url('./flores.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+        }
+
+        div.cuarta {
+            background: linear-gradient(75deg, rgb(116, 169, 198), rgb(192, 139, 203), rgb(229, 134, 150));
+            width: 80%; 
+            margin: 10px auto; 
+            box-sizing: border-box; 
+            overflow: hidden;
+        }
+
+        @media (min-width: 1080px) {
+            div.primero {
+                background-color: rgb(205, 153, 198);
+            }
+
+            div.segundo, div.flores, div.cuarta {
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 600px) and (max-width: 1079px) {
+            div.primero {
+                background-color: #eac9c1(251, 243, 136);
+            }
+
+            div.segundo, div.flores, div.cuarta {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 599px) {
+            div.primero {
+                background-color: #ffc09f;
+            }
+
+            div.segundo, div.flores, div.cuarta {
+                font-size: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="fondo">
+        <h1>Ejercicio de cajas en pila</h1>
+        
+        <div class="primero">
+            <p>Ejemplo n1</p>
+        </div>
+
+        <div class="segundo">
+            <p>Ejemplo n2</p>
+        </div>
+
+        <div class="flores">
+        </div>
+
+        <div class="cuarta">
+            <p class="cuarta">Ejemplo n4</p>
+        </div>
+    </div>
+</body>
+</html>
