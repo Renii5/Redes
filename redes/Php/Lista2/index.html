@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba - Gestión de Registros</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; 
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        header {
+            background-color: #fce1e4;
+            text-align: center;
+            padding: 10px;
+        }
+        footer {
+            background-color: #fce1e4;
+            text-align: center;
+            padding: 20px;
+            position: absolute; 
+            bottom: 0; 
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #e69597;
+            color: white;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #ccc;
+            border: none;
+            cursor: pointer;
+        }
+        select {
+            width: 100%;
+            padding: 5px;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+        .orden {
+            display: inline-block;
+            margin: 10px;
+        }
+        .orden input {
+            padding: 5px;
+        }
+        tbody {
+            display: block;
+            max-height: 500px; 
+            overflow-y: auto; 
+        }
+        thead, tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <header><h1>Artículos</h1></header>
+
+        <button class="btn" id="cargar-datos">Cargar datos</button>
+        <button class="btn" id="vaciar-datos">Vaciar datos</button>
+
+        <div class="orden">
+            <label for="orden">Orden:</label>
+            <input type="text" id="orden" placeholder="codArt">
+        </div>
+    </div>
+
+    <form id="buscarForm">
+        <label for="campo">Buscar: </label>
+        <input type="text" name="campo" id="campo">
+        <input type="submit" value="Buscar">
+    </form>
+
+    <p id="mensaje"></p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lanzamiento</th>
+                <th>Titulo</th>
+                <th>Album</th>
+                <th>Artista</th>
+                <th>Genero</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+
+        <tbody id="resultado">
+            <tr>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td>
+                    <select id="familia-select">
+                        <option value="">Selecciona un genero</option>
+                    </select>
+                </td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // AJAX para manejar el formulario de búsqueda
+        $('#buscarForm').submit(function(event) {
+            event.preventDefault();
+            let campo = $('#campo').val();
+
+            $.ajax({
+                
+                url: 'traeBinario.php',
+                method: 'POST',
+                data: { campo: campo },
+                success: function(data) {
+                    $('#resultado').html(data);
+                },
+                error: function() {
+                    $('#mensaje').text('Hubo un error al buscar los datos.');
+                }
+            });
+        });
+
+        // AJAX para cargar datos desde la base de datos
+        // AJAX para cargar datos desde la base de datos
+        $('#cargar-datos').click(function() {
+            // Mostrar el mensaje "Esperando respuesta..."
+            $('#resultado').html('<tr><td colspan="8">Esperando respuesta...</td></tr>');
+
+            // Hacer la solicitud AJAX
+            $.ajax({
+                url: 'cargarDatos.php',
+                method: 'GET',
+                success: function(data) {
+                    // Reemplazar el mensaje con los datos devueltos
+                    $('#resultado').html(data);
+                },
+                error: function() {
+                    // Mostrar un mensaje de error si la solicitud falla
+                    $('#resultado').html('<tr><td colspan="8">Error al cargar los datos.</td></tr>');
+                }
+            });
+        });
+
+
+        $('#vaciar-datos').click(function() {
+            $('#resultado').empty(); 
+        });
+
+        function eliminarRegistro(id) {
+            $.ajax({
+                url: 'baja.php',
+                method: 'POST',
+                data: { id: id },
+                success: function() {
+                    alert('Registro eliminado.');
+                    location.reload();
+                },
+                error: function() {
+                    alert('Error al eliminar el registro.');
+                }
+            });
+        }
+
+        function modificarRegistro(id) {
+            let nuevoValor = prompt('Introduce el nuevo valor:');
+            $.ajax({
+                url: 'modi.php',
+                method: 'POST',
+                data: { id: id, nuevoValor: nuevoValor },
+                success: function() {
+                    alert('Registro modificado.');
+                    location.reload();
+                },
+                error: function() {
+                    alert('Error al modificar el registro.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
